@@ -60,7 +60,5 @@ target/
 # my things
 .idea/
 cassettes/
-config.json
+scraps/
 *.json
-gui.py
-browser.py

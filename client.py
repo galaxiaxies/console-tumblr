@@ -1,7 +1,8 @@
-import pytumblr
 import json
-import bs4
 import sys
+
+import bs4
+import pytumblr
 
 
 class Dashboard:
@@ -77,6 +78,7 @@ class Dashboard:
                     print(phrase["name"] + ": " + phrase["phrase"])
             else:
                 print("unknown type %s" % post["type"])
+            print(post["note_count"])
         except KeyError or TypeError:
             print("no post found")
         print()
@@ -136,12 +138,12 @@ class Dashboard:
             self.summary_post()
 
 
-class Server:
+class Tumblr:
     def __init__(self):
         config = json.load(open("config.json", "r"))
         self.client = pytumblr.TumblrRestClient(
-            config["key"], config["token"],
-            config["oauth_token"], config["oauth_key"],
+            config["key"], config["secret"],
+            config["oauth_token"], config["oauth_secret"],
         )
         self.dashboard = Dashboard(self.client)
 
@@ -191,6 +193,6 @@ class Server:
 
 
 if __name__ == "__main__":
-    server = Server()
+    server = Tumblr()
     # server.client_info()
     server.choices()

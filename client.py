@@ -1,6 +1,5 @@
 import pytumblr
 import json
-import vcr
 import bs4
 import sys
 
@@ -101,7 +100,6 @@ class Dashboard:
             else:
                 return
         else:
-            req = self.client.like(post_id, reblog_key)
             print("liked post %s" % post_id)
 
     def reblog_post(self):
@@ -147,7 +145,6 @@ class Server:
         )
         self.dashboard = Dashboard(self.client)
 
-    @vcr.use_cassette("cassettes/info.yml")
     def client_info(self):
         info = self.client.info()["user"]["blogs"]
         for blog in info:

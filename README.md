@@ -5,7 +5,7 @@ commands:
     * reblogs post to the blog of the user's choice
 * like
     * likes or unlikes the post (if already liked)
-* next (or <enter>)
+* next (or empty return¡)
     * goes to the next post in the dashboard buffer
 * quit
     * exits the program
